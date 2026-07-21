@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ArteDigital3D - Servicio profesional de impresión 3D FDM y Resina UV. Cotizador 3D instantáneo en tiempo real, prototipado rápido y catálogo e-commerce de piezas exclusivas.">
+    <meta name="keywords" content="impresion 3d, cotizador 3d, stl, resina uv, pla, petg, figuras 3d, cosplay, prototipado rapido">
+    <meta name="author" content="ArteDigital3D">
+    <title>ArteDigital3D | Impresión 3D Profesional & Cotizador Online</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar" id="main-nav">
+        <div class="container nav-container">
+            <a href="#" class="logo" id="brand-logo">
+                <div class="logo-icon">
+                    <i class="bi bi-box-seam-fill"></i>
+                </div>
+                <div class="logo-text">ArteDigital<span>3D</span></div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#cotizador" class="nav-link">Cotizador 3D</a></li>
+                <li><a href="#materiales" class="nav-link">Materiales</a></li>
+                <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+                <li><a href="#trabajos" class="nav-link">Galería</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="cart-btn cart-toggle-btn" id="nav-cart-btn" aria-label="Ver Carrito">
+                    <i class="bi bi-cart3"></i>
+                    <span class="cart-count" id="cart-badge-count">0</span>
+                </button>
+                <a href="#cotizador" class="btn btn-primary btn-sm">
+                    <i class="bi bi-cpu"></i> Cotizar STL
+                </a>
+                <button class="mobile-menu-btn" aria-label="Menú Móvil">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge badge-cyan hero-badge">
+                        <i class="bi bi-stars"></i> Plataforma de Impresión 3D Next-Gen
+                    </div>
+                    <h1 class="hero-title">
+                        Impresión 3D de Alta Precisión & <span class="gradient-text">Arte Digital</span>
+                    </h1>
+                    <p class="hero-description">
+                        Damos vida a tus diseños 3D con la tecnología más avanzada en Resina UV y Filamentos FDM de grado técnico. Cotiza al instante cargando tu archivo .STL o descubre nuestra tienda.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#cotizador" class="btn btn-primary btn-lg">
+                            <i class="bi bi-calculator"></i> Cotizador Express 3D
+                        </a>
+                        <a href="#catalogo" class="btn btn-outline btn-lg">
+                            <i class="bi bi-grid-3x3-gap"></i> Explorar Tienda
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3>99.9%</h3>
+                            <p>Precisión Dimensional</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>24-48h</h3>
+                            <p>Despacho Rápido</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>+5.000</h3>
+                            <p>Piezas Entregadas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/images/hero.jpg" alt="Impresora 3D de alta tecnología imprimiendo escultura" />
+                    </div>
+                    <div class="glass-panel floating-card">
+                        <div class="floating-icon">
+                            <i class="bi bi-printer-fill"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; margin-bottom: 0.2rem;">Impresión Activa</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-muted);">Tolerancia 0.05mm en Resina 8K</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotizador 3D Instantáneo -->
+    <section class="calculator-section" id="cotizador">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge badge-purple">
+                    <i class="bi bi-lightning-charge-fill"></i> Cotización Instantánea
+                </div>
+                <h2 class="section-title">Cotizador Express <span class="gradient-text">3D Interactivo</span></h2>
+                <p class="section-subtitle">
+                    Arrastra tu archivo STL o simula tu modelo para obtener una estimación de precio en tiempo real según material, relleno y escala.
+                </p>
+            </div>
+
+            <div class="calc-grid">
+                <!-- Calc Controls -->
+                <div class="glass-panel calc-controls">
+                    <!-- Dropzone -->
+                    <div class="file-upload-zone" id="stl-dropzone">
+                        <i class="bi bi-cloud-arrow-up-fill file-upload-icon"></i>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Arrastra tu modelo 3D aquí</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Formatos soportados: <strong>.STL, .OBJ, .3MF</strong> (Máx 50MB)</p>
+                        <div id="upload-filename" style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--primary);"></div>
+                        <input type="file" id="stl-file-input" accept=".stl,.obj,.3mf" style="display: none;" />
+                    </div>
+
+                    <!-- Material Selector -->
+                    <div class="form-group">
+                        <label class="form-label">Selecciona el Material <span>*</span></label>
+                        <div class="option-grid">
+                            <div class="option-card material-option selected" data-material="pla">
+                                <h4>PLA+ Neón</h4>
+                                <p>Alta definición, ecológico</p>
+                            </div>
+                            <div class="option-card material-option" data-material="petg">
+                                <h4>PETG Tough</h4>
+                                <p>Resistente y duradero</p>
+                            </div>
+                            <div class="option-card material-option" data-material="resin">
+                                <h4>Resina UV 8K</h4>
+                                <p>Detalle microscópico</p>
+                            </div>
+                            <div class="option-card material-option" data-material="tpu">
+                                <h4>TPU Flexible</h4>
+                                <p>Goma elástica 95A</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Infill Slider -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Densidad de Relleno (Infill): <span id="calc-infill-val">20%</span>
+                        </label>
+                        <input type="range" min="15" max="100" value="20" class="range-slider" id="calc-infill" />
+                    </div>
+
+                    <!-- Quality Selector -->
+                    <div class="form-group">
+                        <label class="form-label">Resolución de Capa</label>
+                        <select id="calc-quality" style="width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; font-family: var(--font-body);">
+                            <option value="0.20" selected>Estándar (0.20 mm) - Recomendado</option>
+                            <option value="0.12">Alta Definición (0.12 mm) - Ultra Detalle</option>
+                            <option value="0.28">Rápido / Borrador (0.28 mm) - Económico</option>
+                        </select>
+                    </div>
+
+                    <!-- Scale Slider -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Escala de Modelo: <span id="calc-scale-val">100%</span>
+                        </label>
+                        <input type="range" min="50" max="200" value="100" class="range-slider" id="calc-scale" />
+                    </div>
+                </div>
+
+                <!-- 3D Canvas & Price Preview -->
+                <div class="glass-panel calc-preview-box">
+                    <div class="preview-canvas-container" id="three-canvas-container">
+                        <div class="canvas-controls-overlay">
+                            <button class="canvas-btn" id="btn-toggle-wireframe" title="Alternar Malla Wireframe">
+                                <i class="bi bi-grid-3x3"></i>
+                            </button>
+                            <button class="canvas-btn" id="btn-reset-cam" title="Reiniciar Cámara">
+                                <i class="bi bi-arrow-counterclockwise"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Volumen Estimado:</span>
+                            <strong id="calc-stat-volume" style="color: #fff;">65.4 cm³</strong>
+                        </div>
+                        <div class="price-row">
+                            <span>Peso de Material:</span>
+                            <strong id="calc-stat-weight" style="color: #fff;">81 g</strong>
+                        </div>
+                        <div class="price-row">
+                            <span>Tiempo de Impresión:</span>
+                            <strong id="calc-stat-time" style="color: #fff;">4.5 hrs</strong>
+                        </div>
+
+                        <div class="price-total-row">
+                            <div>
+                                <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Total Estimado (IVA incl.)</span>
+                                <h3>Precio Estimado:</h3>
+                            </div>
+                            <span class="total-price" id="calc-total-price">$12.900</span>
+                        </div>
+
+                        <button class="btn btn-primary" id="btn-add-quote-cart" style="width: 100%; margin-top: 1.25rem;">
+                            <i class="bi bi-cart-plus-fill"></i> Añadir Cotización al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Material Guide Section -->
+    <section class="materials-section" id="materiales">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge badge-emerald">
+                    <i class="bi bi-layers-fill"></i> Guía Técnica
+                </div>
+                <h2 class="section-title">Materiales & <span class="gradient-text">Especificaciones</span></h2>
+                <p class="section-subtitle">
+                    Selecciona el material perfecto según el uso de tu proyecto: prototipo, figura decorativa o pieza mecánica.
+                </p>
+            </div>
+
+            <div class="materials-grid">
+                <!-- PLA Card -->
+                <div class="glass-panel material-card">
+                    <div class="material-icon pla">
+                        <i class="bi bi-box"></i>
+                    </div>
+                    <h3>PLA+ Neón Pro</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">
+                        Excelente acabado superficial y gran variedad de colores brillantes. Ideal para figuras y maquetas.
+                    </p>
+                    <div class="material-specs">
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Detalle Visual</span><span>9/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Resistencia Mecánica</span><span>6/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 60%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Tolerancia Térmica</span><span>55°C</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 50%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PETG Card -->
+                <div class="glass-panel material-card">
+                    <div class="material-icon petg">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h3>PETG Ultra-Tough</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">
+                        Alta tenacidad, resistencia al impacto y humedad. El favorito para piezas mecánicas y exteriores.
+                    </p>
+                    <div class="material-specs">
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Detalle Visual</span><span>7.5/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Resistencia Mecánica</span><span>8.5/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Tolerancia Térmica</span><span>80°C</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 80%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resina UV Card -->
+                <div class="glass-panel material-card">
+                    <div class="material-icon resin">
+                        <i class="bi bi-gem"></i>
+                    </div>
+                    <h3>Resina UV 8K</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">
+                        Impresión SLA/LCD de ultra definición. Superficie completamente lisa sin líneas de capa visibles.
+                    </p>
+                    <div class="material-specs">
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Detalle Visual</span><span>10/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Resistencia Mecánica</span><span>7/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Tolerancia Térmica</span><span>65°C</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 65%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TPU Card -->
+                <div class="glass-panel material-card">
+                    <div class="material-icon tpu">
+                        <i class="bi bi-arrows-expand"></i>
+                    </div>
+                    <h3>TPU Flexible 95A</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">
+                        Polímero elástico tipo goma, amortiguador de impactos y altamente flexible sin deformarse.
+                    </p>
+                    <div class="material-specs">
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Flexibilidad</span><span>10/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Resistencia Mecánica</span><span>9/10</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="spec-bar-group">
+                            <div class="spec-label"><span>Tolerancia Térmica</span><span>85°C</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog-section" id="catalogo">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge badge-purple">
+                    <i class="bi bi-shop"></i> Tienda Online
+                </div>
+                <h2 class="section-title">Catálogo de <span class="gradient-text-pink">Productos Exclusivos</span></h2>
+                <p class="section-subtitle">
+                    Explora nuestra colección de impresiones 3D prediseñadas, coleccionables y props listos para despachar.
+                </p>
+            </div>
+
+            <!-- Filters -->
+            <div class="catalog-filters">
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-category="all">Todas las Piezas</button>
+                    <button class="filter-btn" data-category="figuras">Figuras & Arte</button>
+                    <button class="filter-btn" data-category="prototipos">Prototipos & Maquetas</button>
+                    <button class="filter-btn" data-category="cosplay">Props & Cosplay</button>
+                    <button class="filter-btn" data-category="decoracion">Litofanías & Lámparas</button>
+                </div>
+
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="catalog-search" placeholder="Buscar por nombre..." />
+                </div>
+            </div>
+
+            <!-- Dynamic Product Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Rendered dynamically by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Works Section -->
+    <section class="gallery-section" id="trabajos">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge badge-cyan">
+                    <i class="bi bi-images"></i> Portafolio
+                </div>
+                <h2 class="section-title">Galería de <span class="gradient-text">Trabajos Realizados</span></h2>
+                <p class="section-subtitle">
+                    Descubre la calidad técnica y acabado final de los proyectos entregados a nuestros clientes.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/prod_mech.jpg" alt="Impresión en resina" />
+                    <div class="gallery-overlay">
+                        <h4>Figura Mecha Robot 8K</h4>
+                        <p style="font-size: 0.85rem; color: var(--primary);">Resina UV Gris - 0.03mm de capa</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/prod_arch.jpg" alt="Maqueta arquitectura" />
+                    <div class="gallery-overlay">
+                        <h4>Proyecto Arquitectónico</h4>
+                        <p style="font-size: 0.85rem; color: var(--primary);">PLA+ Blanco Titanio - Escala 1:100</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/prod_helmet.jpg" alt="Casco Sci-Fi Cosplay" />
+                    <div class="gallery-overlay">
+                        <h4>Prop Cyberpunk Cosplay</h4>
+                        <p style="font-size: 0.85rem; color: var(--primary);">PETG Mate con visera neón</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-Over Shopping Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="bi bi-bag-check-fill" style="color: var(--primary);"></i> Tu Carrito de Compras</h3>
+            <button class="cart-close-btn" id="cart-close-btn" aria-label="Cerrar Carrito">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <div class="cart-items" id="cart-items-list">
+            <!-- Dynamic cart items rendered by app.js -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal-price" style="color: var(--primary);">$0</span>
+            </div>
+            <button class="btn btn-primary" id="btn-checkout" style="width: 100%;">
+                <i class="bi bi-credit-card-fill"></i> Finalizar Pedido
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo">
+                        <div class="logo-icon"><i class="bi bi-box-seam-fill"></i></div>
+                        <div class="logo-text">ArteDigital<span>3D</span></div>
+                    </a>
+                    <p>
+                        Tu aliado estratégico en fabricación aditiva, prototipado industrial rápido y creación de esculturas 3D de alta precisión.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#" class="social-icon" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#cotizador">Cotizador 3D</a></li>
+                        <li><a href="#materiales">Guía de Materiales</a></li>
+                        <li><a href="#catalogo">Tienda Online</a></li>
+                        <li><a href="#trabajos">Galería</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Servicios 3D</h4>
+                    <ul class="footer-links">
+                        <li><a href="#cotizador">Impresión FDM (PLA/PETG)</a></li>
+                        <li><a href="#cotizador">Impresión Resina UV 8K</a></li>
+                        <li><a href="#cotizador">Prototipado Industrial</a></li>
+                        <li><a href="#cotizador">Escaneo & Diseño 3D</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Contacto</h4>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-envelope" style="color: var(--primary);"></i> contacto@artedigital3d.com</li>
+                        <li><i class="bi bi-whatsapp" style="color: var(--accent-emerald);"></i> +56 9 1234 5678</li>
+                        <li><i class="bi bi-geo-alt" style="color: var(--secondary);"></i> Santiago, Chile</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ArteDigital3D. Todos los derechos reservados. Impresión 3D Profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application -->
+    <script src="app.js"></script>
+</body>
+</html>
