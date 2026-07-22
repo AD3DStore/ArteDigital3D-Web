@@ -35,6 +35,17 @@ let scene, camera, renderer, controls, currentMesh, gridHelper;
 // Gallery Products Data
 const productsData = [
   {
+    id: 7,
+    title: 'Dispensador de Bolas 2" Pulgadas',
+    category: 'decoracion',
+    categoryName: 'Decoración Studio',
+    material: 'A Pedido / Color a Elección',
+    price: 150000,
+    desc: 'Dispensador modular interactivo para cápsulas o bolas de 2 pulgadas. Producto a pedido, color a elegir. Estructura de panal resistente y funcional.',
+    img: 'assets/dispensador_bolas.jpg',
+    badge: '★ Nuevo'
+  },
+  {
     id: 1,
     title: 'Figura Articulada Dummy 13 (250% / 75%)',
     category: 'figuras',
@@ -53,7 +64,7 @@ const productsData = [
     material: 'PLA Pro Mate',
     price: 18500,
     desc: 'Jarrón de diseño geométrico vanguardista. Estructura liviana e impermeable tratada.',
-    img: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%2314171d"/><path d="M200 60 L280 180 L230 340 L170 340 L120 180 Z" fill="none" stroke="%23d4af37" stroke-width="4"/><path d="M200 60 L230 180 L200 340 M120 180 L280 180" stroke="%23d4af37" stroke-width="2" opacity="0.6"/></svg>',
+    img: 'assets/logo_ad3d.png',
     badge: 'Diseño Exclusivo'
   },
   {
@@ -64,7 +75,7 @@ const productsData = [
     material: 'PETG Alta Resistencia',
     price: 21900,
     desc: 'Mecanismo planetario funcional de precisión para prototipos mecánicos y robótica.',
-    img: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%2314171d"/><circle cx="200" cy="200" r="100" fill="none" stroke="%2338bdf8" stroke-width="6"/><circle cx="200" cy="200" r="40" fill="none" stroke="%2338bdf8" stroke-width="4"/><circle cx="160" cy="160" r="25" fill="%2338bdf8" opacity="0.8"/><circle cx="240" cy="160" r="25" fill="%2338bdf8" opacity="0.8"/><circle cx="200" cy="250" r="25" fill="%2338bdf8" opacity="0.8"/></svg>',
+    img: 'assets/logo_ad3d.png',
     badge: 'Grado Técnico'
   },
   {
@@ -75,7 +86,7 @@ const productsData = [
     material: 'PETG Técnico + Lijado Base',
     price: 55000,
     desc: 'Réplica a tamaño real escala 1:1. Estructura altamente resistente lista para vestuario o exhibición.',
-    img: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%2314171d"/><path d="M130 120 C130 80, 270 80, 270 120 L280 240 C280 300, 120 300, 120 240 Z" fill="none" stroke="%23d4af37" stroke-width="5"/><path d="M150 180 L250 180 L240 220 L160 220 Z" fill="%23d4af37" opacity="0.9"/></svg>',
+    img: 'assets/logo_ad3d.png',
     badge: 'Edición Cosplay'
   },
   {
@@ -86,7 +97,7 @@ const productsData = [
     material: 'PLA Pro Blanco Mate',
     price: 28000,
     desc: 'Reinterpretación clásica con patrones 3D impresos en PLA Pro de alta nitidez.',
-    img: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%2314171d"/><path d="M170 100 Q200 60 230 100 Q260 160 220 250 L180 250 Z" fill="none" stroke="%23e2e8f0" stroke-width="4"/><circle cx="200" cy="140" r="30" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>',
+    img: 'assets/logo_ad3d.png',
     badge: 'Arte 3D'
   },
   {
@@ -97,9 +108,98 @@ const productsData = [
     material: 'PETG Técnico Reforzado',
     price: 16900,
     desc: 'Soporte funcional diseñado para resistir cargas mecánicas continuas e intemperie.',
-    img: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%2314171d"/><rect x="120" y="140" width="160" height="120" rx="20" fill="none" stroke="%2338bdf8" stroke-width="4"/><line x1="140" y1="200" x2="260" y2="200" stroke="%23d4af37" stroke-width="3"/></svg>',
+    img: 'assets/logo_ad3d.png',
     badge: 'Alta Carga'
   }
+];
+
+// Marketplace Designs Data (ONLY PLA Pro and PETG)
+const marketplaceData = [
+  {
+    id: 107,
+    title: 'Dispensador de Bolas 2" Pulgadas',
+    author: 'ArteDigital3D',
+    category: 'hogar',
+    price: 150000,
+    fileName: 'dispensador_bolas_2in.stl',
+    badge: 'badge-new',
+    badgeText: 'Nuevo',
+    img: 'assets/dispensador_bolas.jpg'
+  },
+  {
+    id: 101,
+    title: 'Cactus Paramétrico Geométrico',
+    author: '3DArtisan',
+    category: 'hogar',
+    price: 9990,
+    fileName: 'cactus_geometrico.stl',
+    badge: 'badge-top-seller',
+    badgeText: 'Top Seller',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 102,
+    title: 'Soporte Mandos Gaming Sci-Fi',
+    author: 'VortexForge',
+    category: 'gadgets',
+    price: 13500,
+    fileName: 'soporte_gaming_scifi.stl',
+    badge: 'badge-new',
+    badgeText: 'Nuevo',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 103,
+    title: 'Figura Zbrush Cyber Dragon',
+    author: 'DragonScales',
+    category: 'figuras',
+    price: 24900,
+    fileName: 'cyber_dragon_sculpt.obj',
+    badge: 'badge-top-seller',
+    badgeText: 'Top Seller',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 104,
+    title: 'Máscara Oni Cyberpunk V2',
+    author: 'CyberProps',
+    category: 'cosplay',
+    price: 35000,
+    fileName: 'oni_mask_cyberpunk.3mf',
+    badge: 'badge-new',
+    badgeText: 'Nuevo',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 105,
+    title: 'Organizador Escritorio Colmena',
+    author: 'BambuLines',
+    category: 'hogar',
+    price: 11990,
+    fileName: 'organizador_colmena.stl',
+    badge: 'badge-top-seller',
+    badgeText: 'Popular',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 106,
+    title: 'Soporte Auriculares Neon Beam',
+    author: 'VortexForge',
+    category: 'gadgets',
+    price: 14900,
+    fileName: 'neon_beam_stand.stl',
+    badge: 'badge-top-seller',
+    badgeText: 'Top Seller',
+    img: 'assets/logo_ad3d.png'
+  }
+];
+
+const designersRanking = [
+  { rank: 1, name: 'VortexForge', sales: 420, avatar: 'VF' },
+  { rank: 2, name: '3DArtisan', sales: 385, avatar: '3D' },
+  { rank: 3, name: 'CyberProps', sales: 310, avatar: 'CP' },
+  { rank: 4, name: 'DragonScales', sales: 290, avatar: 'DS' },
+  { rank: 5, name: 'BambuLines', sales: 180, avatar: 'BL' }
 ];
 
 let selectedModalProduct = null;
@@ -113,6 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupDropzone();
   updateHourlyPriceCalculation();
   updateCartBadge();
+  
+  // Initialize Marketplace
+  renderMarketplace('all');
+  renderDesignersRanking();
+  setupMarketplaceSearchAndFilters();
 });
 
 // --- Theme Toggle ---
@@ -718,4 +823,224 @@ document.getElementById('open-cart-btn')?.addEventListener('click', openCartDraw
 function toggleFaq(buttonElement) {
   const faqItem = buttonElement.parentElement;
   faqItem.classList.toggle('active');
+}
+
+// Mobile Hamburger Menu Interactions
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on any nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking anywhere outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+  }
+});
+
+// ==========================================================================
+// Marketplace de Diseñadores 3D Logic
+// ==========================================================================
+
+function renderMarketplace(filterCategory, searchWord = '') {
+  const grid = document.getElementById('marketplace-grid');
+  if (!grid) return;
+
+  const searchLower = searchWord.toLowerCase().trim();
+
+  const filtered = marketplaceData.filter(item => {
+    const matchesCategory = filterCategory === 'all' || item.category === filterCategory;
+    const matchesSearch = !searchLower || 
+      item.title.toLowerCase().includes(searchLower) ||
+      item.author.toLowerCase().includes(searchLower) ||
+      item.category.toLowerCase().includes(searchLower);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
+        <p>No se encontraron modelos con los criterios de búsqueda.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(item => `
+    <div class="model-card">
+      <div class="model-thumb-box">
+        <span class="model-badge ${item.badge}">${item.badgeText}</span>
+        <img src="${item.img}" alt="${item.title}">
+      </div>
+      <div class="model-details">
+        <span class="model-category">${item.category}</span>
+        <h3 class="model-title">${item.title}</h3>
+        <span class="model-author">por @${item.author}</span>
+        
+        <div class="model-footer">
+          <div class="model-price-box">
+            <span>Impresión desde</span>
+            <strong>${formatCLP(item.price)}</strong>
+          </div>
+          <button class="btn btn-primary btn-sm shadow-gold" onclick="loadMarketplaceModelToCotizador(${item.id})">
+            Imprimir Ahora
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDesignersRanking() {
+  const container = document.getElementById('designers-ranking-list');
+  if (!container) return;
+
+  container.innerHTML = designersRanking.map(d => `
+    <div class="ranking-item">
+      <div class="rank-number">${d.rank}</div>
+      <div class="rank-details">
+        <div class="rank-name">@${d.name}</div>
+        <div class="rank-stats">${d.sales} impresiones realizadas</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupMarketplaceSearchAndFilters() {
+  const searchInput = document.getElementById('marketplace-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const activeFilter = document.querySelector('.m-filter-btn.active')?.getAttribute('data-mfilter') || 'all';
+      renderMarketplace(activeFilter, e.target.value);
+    });
+  }
+
+  const filterContainer = document.querySelector('.marketplace-category-filter');
+  if (filterContainer) {
+    filterContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('m-filter-btn')) {
+        document.querySelectorAll('.m-filter-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const filter = e.target.getAttribute('data-mfilter');
+        const searchValue = searchInput ? searchInput.value : '';
+        renderMarketplace(filter, searchValue);
+      }
+    });
+  }
+}
+
+// Action: Load Marketplace Model into Live 3D Visualizer & Go to Cotizador
+function loadMarketplaceModelToCotizador(itemId) {
+  const item = marketplaceData.find(m => m.id === itemId);
+  if (!item) return;
+
+  // Set Visualizer State
+  liveCotizadorState.fileName = item.fileName;
+  
+  // Set calculated base volume randomly based on design to simulate unique 3D geometries
+  const mockVolumes = { 101: 52.0, 102: 85.0, 103: 135.0, 104: 190.0, 105: 68.0, 106: 78.0, 107: 145.0 };
+  const mockDims = {
+    101: { x: 45, y: 45, z: 90 },
+    102: { x: 75, y: 110, z: 65 },
+    103: { x: 95, y: 135, z: 80 },
+    104: { x: 120, y: 140, z: 90 },
+    105: { x: 60, y: 60, z: 75 },
+    106: { x: 70, y: 70, z: 120 },
+    107: { x: 90, y: 90, z: 160 }
+  };
+
+  liveCotizadorState.rawVolumeCm3 = mockVolumes[itemId] || 60.0;
+  liveCotizadorState.rawDimX = mockDims[itemId]?.x || 60;
+  liveCotizadorState.rawDimY = mockDims[itemId]?.y || 60;
+  liveCotizadorState.rawDimZ = mockDims[itemId]?.z || 80;
+
+  // Simulate rendering different geometrical shapes representing the model
+  if (currentMesh && scene) {
+    scene.remove(currentMesh);
+    let newGeo;
+    if (itemId === 101 || itemId === 105) {
+      // Cylinder/Cone representing vase/cactus/colmena
+      newGeo = new THREE.CylinderGeometry(15, 20, 45, 6);
+    } else if (itemId === 107) {
+      // Hexagonal capsule shape for the ball dispenser
+      newGeo = new THREE.CylinderGeometry(18, 18, 55, 6);
+    } else if (itemId === 103 || itemId === 104) {
+      // Complex TorusKnot / Icosahedron representing mask/dragon
+      newGeo = new THREE.TorusKnotGeometry(18, 5, 100, 16);
+    } else {
+      // Box representing gaming supports
+      newGeo = new THREE.BoxGeometry(35, 35, 35);
+    }
+
+    newGeo.center();
+    const matColor = liveCotizadorState.material === 'pla' ? 0xd4af37 : 0x38bdf8;
+    const material = new THREE.MeshStandardMaterial({
+      color: matColor,
+      metalness: 0.2,
+      roughness: 0.35
+    });
+
+    currentMesh = new THREE.Mesh(newGeo, material);
+    const s = liveCotizadorState.scalePercent / 100;
+    currentMesh.scale.set(s, s, s);
+    currentMesh.position.y = (35 * s) / 2 + 5;
+    scene.add(currentMesh);
+    reset3DCamera();
+  }
+
+  // Update UI and perform calculation
+  updateDimensionsUI();
+  updateHourlyPriceCalculation();
+
+  // Scroll smoothly to visualizer cotizador section
+  const cotizadorSection = document.getElementById('cotizador');
+  if (cotizadorSection) {
+    cotizadorSection.scrollIntoView({ behavior: 'smooth' });
+    
+    // Quick notification animation on dropzone
+    const dropzone = document.getElementById('dropzone-box');
+    if (dropzone) {
+      dropzone.style.borderColor = 'var(--accent-cyan)';
+      setTimeout(() => {
+        dropzone.style.borderColor = 'var(--accent-gold)';
+      }, 1000);
+    }
+  }
+}
+
+// Creator Signup Modal Functions
+function openDesignerModal() {
+  const modal = document.getElementById('designer-modal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeDesignerModal() {
+  const modal = document.getElementById('designer-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function handleDesignerSignup(event) {
+  event.preventDefault();
+  alert('¡Gracias por postular! Tu solicitud ha sido enviada con éxito. Nuestro equipo revisará tu portafolio y te contactará por correo electrónico dentro de las próximas 48 horas.');
+  closeDesignerModal();
+  event.target.reset();
 }
