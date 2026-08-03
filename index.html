@@ -1,0 +1,2619 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArteDigital3D | Estudio de Impresión 3D Premium</title>
+  <meta name="description" content="Estudio especializado en manufactura aditiva FDM e impresión 3D en filamentos de alta gama (PLA Pro Premium y PETG Técnico). Prototipado, repuestos y figuras con acabados industriales.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <style>
+/* ==========================================================================
+   ArteDigital3D - Luxury Studio Design System & Variables
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Studio Light Mode */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --accent-gold: #c59b27;
+  --accent-gold-hover: #a67f1b;
+  --accent-cyan: #0284c7;
+  --accent-green: #16a34a;
+  
+  --border-color: rgba(226, 232, 240, 0.8);
+  --border-highlight: rgba(197, 155, 39, 0.4);
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --shadow-gold: 0 10px 30px rgba(197, 155, 39, 0.25);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+  --gradient-dark: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95));
+}
+
+[data-theme="dark"] {
+  /* Color Palette - Studio Obsidian Dark Mode */
+  --bg-primary: #090a0d;
+  --bg-secondary: #12151c;
+  --bg-tertiary: #1a1e27;
+  --bg-glass: rgba(18, 21, 28, 0.75);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --accent-gold: #d4af37;
+  --accent-gold-hover: #e5c158;
+  --accent-cyan: #38bdf8;
+  --accent-green: #22c55e;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(212, 175, 55, 0.5);
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.3);
+  
+  --gradient-dark: linear-gradient(180deg, rgba(18, 21, 28, 0.8), rgba(9, 10, 13, 0.95));
+}
+
+/* ==========================================================================
+   Global Reset & Base
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section { padding: 5rem 0; position: relative; }
+.text-center { text-align: center; }
+
+.gold-gradient-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.box-panel {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+/* ==========================================================================
+   Buttons & UI Elements
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-lg { padding: 1rem 2rem; font-size: 1.05rem; }
+.btn-sm { padding: 0.45rem 0.9rem; font-size: 0.825rem; }
+.btn-primary { background: var(--gradient-gold); color: #000000; border: none; font-weight: 700; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); filter: brightness(1.08); }
+.btn-secondary { background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); }
+.btn-secondary:hover { background: var(--bg-secondary); border-color: var(--accent-gold); transform: translateY(-2px); }
+.btn-whatsapp { background: #25d366; color: #ffffff; border: none; font-weight: 700; }
+.btn-whatsapp:hover { background: #20ba5a; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35); transform: translateY(-2px); }
+.btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); color: #ffffff; border: none; font-weight: 700; }
+.btn-instagram:hover { box-shadow: 0 8px 25px rgba(214, 36, 159, 0.35); transform: translateY(-2px); filter: brightness(1.08); }
+.btn-block { width: 100%; }
+.shadow-gold { box-shadow: var(--shadow-gold); }
+
+.section-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--accent-gold);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.section-title { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.section-subtitle { color: var(--text-secondary); font-size: 1.15rem; max-width: 700px; margin: 0 auto 3rem auto; }
+
+/* ==========================================================================
+   Announcement Bar & Navbar
+   ========================================================================== */
+
+.announcement-bar {
+  background: linear-gradient(90deg, #11141b 0%, #1c2230 50%, #11141b 100%);
+  color: #f8fafc;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.announcement-content { display: flex; justify-content: space-between; align-items: center; }
+.announcement-link { color: var(--accent-gold); font-weight: 600; text-decoration: underline; }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.navbar-container { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+  background: #000000;
+  border: 1px solid var(--border-highlight);
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.06);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-gold);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-gold);
+}
+.brand-name { font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 800; letter-spacing: -0.5px; }
+.brand-highlight { color: var(--accent-gold); }
+
+.nav-menu { display: flex; align-items: center; gap: 2rem; }
+.nav-link { font-weight: 500; color: var(--text-secondary); position: relative; padding: 0.25rem 0; transition: color var(--transition-fast); }
+.nav-link:hover, .nav-link.active { color: var(--text-primary); }
+.nav-link.active::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: var(--accent-gold); border-radius: var(--radius-full); }
+
+.nav-actions { display: flex; align-items: center; gap: 1rem; }
+.icon-btn { background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); width: 42px; height: 42px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--transition-fast); }
+.icon-btn:hover { border-color: var(--accent-gold); transform: scale(1.05); }
+
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+[data-theme="light"] .sun-icon { display: none; }
+[data-theme="light"] .moon-icon { display: block; }
+
+.cart-btn { background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.55rem 1.25rem; border-radius: var(--radius-full); display: flex; align-items: center; gap: 0.6rem; font-weight: 600; cursor: pointer; position: relative; transition: all var(--transition-fast); }
+.cart-btn:hover { border-color: var(--accent-gold); box-shadow: var(--shadow-sm); }
+.cart-badge { background: var(--accent-gold); color: #000; font-size: 0.75rem; font-weight: 800; width: 20px; height: 20px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; }
+
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+.mobile-toggle span { width: 24px; height: 2px; background: var(--text-primary); transition: var(--transition-fast); }
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero { position: relative; padding: 5rem 0 4rem 0; overflow: hidden; }
+.hero-bg-glow { position: absolute; top: -150px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0) 70%); pointer-events: none; z-index: 0; }
+.hero-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem; }
+.sparkle { color: var(--accent-gold); }
+.hero-title { font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 1.25rem; }
+.hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.25rem; max-width: 600px; }
+.hero-cta-group { display: flex; gap: 1rem; margin-bottom: 3rem; }
+.hero-features-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+.feature-item { display: flex; align-items: center; gap: 0.75rem; }
+.feature-icon { font-size: 1.5rem; width: 44px; height: 44px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; }
+.feature-item strong { display: block; font-size: 0.9rem; }
+.feature-item span { font-size: 0.78rem; color: var(--text-muted); }
+
+.hero-card-preview { padding: 1.5rem; }
+.hero-card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; font-size: 0.85rem; font-weight: 600; }
+.live-dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 10px var(--accent-green); }
+.hero-image-wrapper { position: relative; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg-tertiary); }
+.hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-badge-floating { position: absolute; bottom: 1rem; left: 1rem; background: rgba(18, 21, 28, 0.85); backdrop-filter: blur(8px); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); border: 1px solid var(--border-highlight); font-size: 0.8rem; color: #fff; display: flex; align-items: center; gap: 0.4rem; }
+.hero-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem; }
+.hero-card-info h4 { font-size: 1.1rem; }
+.hero-card-info p { font-size: 0.82rem; color: var(--text-muted); }
+.hero-card-price { text-align: right; }
+.price-label { display: block; font-size: 0.75rem; color: var(--text-muted); }
+.price-val { font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent-gold); }
+
+/* ==========================================================================
+   3D Live Cotizador & Visualizer Section
+   ========================================================================== */
+
+
+
+/* ==========================================================================
+   Product Gallery & Material Guide Sections
+   ========================================================================== */
+
+.gallery-filter-bar { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.filter-btn { background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0.5rem 1.25rem; border-radius: var(--radius-full); font-weight: 600; cursor: pointer; transition: all var(--transition-fast); }
+.filter-btn:hover, .filter-btn.active { background: var(--gradient-gold); color: #000; border-color: transparent; box-shadow: var(--shadow-gold); }
+
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 2rem; }
+.product-card { background: var(--bg-glass); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--transition-fast); display: flex; flex-direction: column; }
+.product-card:hover { transform: translateY(-6px); border-color: var(--border-highlight); box-shadow: var(--shadow-md); }
+.product-thumb-container { position: relative; aspect-ratio: 1 / 1; background: #0c0c0c; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.product-thumb { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform 0.5s ease; padding: 0.35rem; }
+.product-card:hover .product-thumb { transform: scale(1.04); }
+.product-badge-tag { position: absolute; top: 0.75rem; left: 0.75rem; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-full); border: 1px solid rgba(255, 255, 255, 0.15); }
+.product-details { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+.product-title { font-size: 1.1rem; margin-bottom: 0.35rem; }
+.product-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.product-price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--border-color); }
+.product-price { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--accent-gold); }
+
+.materials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.material-card { padding: 2rem; position: relative; }
+.Highlight-card { border-color: var(--border-highlight); box-shadow: var(--shadow-gold); }
+.mat-card-badge { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.gold-badge { color: var(--accent-gold); }
+.mat-name { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.mat-description { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.75rem; }
+.mat-specs-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem; }
+.spec-info { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.25rem; }
+.progress-bar { height: 6px; background: var(--bg-tertiary); border-radius: var(--radius-full); overflow: hidden; }
+.progress-fill { height: 100%; background: var(--gradient-gold); }
+.mat-ideal-use { font-size: 0.82rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1rem; }
+
+/* FAQ Section */
+.faq-accordion-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+.faq-item { background: var(--bg-glass); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; }
+.faq-question { width: 100%; padding: 1.25rem 1.5rem; background: none; border: none; text-align: left; color: var(--text-primary); font-weight: 600; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.faq-icon { font-size: 1.4rem; color: var(--accent-gold); transition: transform var(--transition-fast); }
+.faq-item.active .faq-icon { transform: rotate(45deg); }
+.faq-answer { display: none; padding: 0 1.5rem 1.25rem 1.5rem; color: var(--text-secondary); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 0.5rem; padding-top: 1rem; }
+.faq-item.active .faq-answer { display: block; }
+
+/* CTA Banner & Footer */
+.cta-banner { background: linear-gradient(135deg, #12151c 0%, #1a1e27 100%); color: #fff; padding: 5rem 0; border-top: 1px solid var(--border-highlight); position: relative; }
+.cta-banner h2 { font-size: 2.5rem; color: #fff; margin-bottom: 1rem; }
+.cta-banner p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem auto; }
+.cta-banner-buttons { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+.footer { background: var(--bg-primary); border-top: 1px solid var(--border-color); padding: 4rem 0 2rem 0; }
+.footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 3rem; margin-bottom: 3rem; }
+.brand-col p { font-size: 0.88rem; color: var(--text-muted); margin: 1rem 0 1.5rem 0; }
+.social-links { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--accent-gold); }
+.footer-col h4 { font-size: 1.05rem; margin-bottom: 1.2rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a, .footer-col p { font-size: 0.88rem; color: var(--text-secondary); }
+.footer-col a:hover { color: var(--accent-gold); }
+.footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; font-size: 0.8rem; color: var(--text-muted); }
+
+/* Modals & Cart Drawer */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity var(--transition-fast); }
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-card { max-width: 850px; width: 100%; padding: 2rem; position: relative; transform: scale(0.95); transition: transform var(--transition-fast); }
+.modal-overlay.active .modal-card { transform: scale(1); }
+.modal-close { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; font-size: 2rem; color: var(--text-muted); cursor: pointer; }
+.modal-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+.modal-img-col { aspect-ratio: 1/1; border-radius: var(--radius-md); overflow: hidden; background: #0c0c0c; display: flex; align-items: center; justify-content: center; }
+.modal-img-col img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 0.5rem; }
+.modal-badge { font-size: 0.75rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; }
+.modal-price { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; color: var(--accent-gold); margin: 0.5rem 0 1rem 0; }
+.modal-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+.modal-option-group { margin-bottom: 1rem; }
+.quantity-picker { display: inline-flex; align-items: center; gap: 1rem; background: var(--bg-tertiary); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--border-color); margin-top: 0.35rem; }
+.qty-btn { background: none; border: none; color: var(--text-primary); font-size: 1.2rem; font-weight: bold; cursor: pointer; width: 24px; }
+
+/* Modal Tabs */
+.modal-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+.modal-tab-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+.modal-tab-btn:hover {
+  color: var(--text-primary);
+}
+.modal-tab-btn.active {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--accent-gold);
+  border: 1px solid var(--border-highlight);
+}
+.modal-tab-content {
+  display: none;
+}
+.modal-tab-content.active {
+  display: block;
+}
+/* Modeler Input Forms */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.form-group label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.form-input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+  width: 100%;
+  font-family: inherit;
+  transition: border-color var(--transition-fast);
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+}
+textarea.form-input {
+  resize: vertical;
+}
+
+.cart-drawer-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); z-index: 250; opacity: 0; pointer-events: none; transition: opacity var(--transition-fast); }
+.cart-drawer-overlay.active { opacity: 1; pointer-events: auto; }
+.cart-drawer { position: absolute; top: 0; right: 0; width: 100%; max-width: 440px; height: 100%; border-radius: 0; display: flex; flex-direction: column; transform: translateX(100%); transition: transform var(--transition-normal); }
+.cart-drawer-overlay.active .cart-drawer { transform: translateX(0); }
+.cart-header { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+.cart-close-btn { background: none; border: none; font-size: 1.8rem; color: var(--text-muted); cursor: pointer; }
+.cart-body { padding: 1.5rem; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+.cart-item { display: flex; gap: 1rem; padding: 1rem; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); position: relative; }
+.cart-item-img { width: 60px; height: 60px; border-radius: var(--radius-sm); object-fit: cover; background: #000; }
+.cart-item-info { flex: 1; }
+.cart-item-title { font-size: 0.92rem; font-weight: 700; }
+.cart-item-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; }
+.cart-item-price { font-size: 0.95rem; font-weight: 800; color: var(--accent-gold); margin-top: 0.35rem; }
+.cart-item-remove { background: none; border: none; color: #ef4444; font-size: 1.1rem; cursor: pointer; position: absolute; top: 0.75rem; right: 0.75rem; }
+.cart-footer { padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary); }
+.cart-summary-totals { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
+.cart-total-row { display: flex; justify-content: space-between; }
+.total-highlight { font-size: 1.15rem; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); }
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .hero-container { grid-template-columns: 1fr; gap: 2rem; }
+  .materials-grid { grid-template-columns: 1fr; }
+  .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 3rem 0; }
+  .hero-title { font-size: 2.3rem; line-height: 1.2; }
+  .hero-subtitle { font-size: 1.05rem; margin-bottom: 1.5rem; }
+  .hero-cta-group { flex-direction: column; width: 100%; gap: 0.75rem; }
+  .hero-cta-group .btn { width: 100%; }
+  .hero-features-list { grid-template-columns: 1fr; gap: 1rem; }
+  
+  .navbar-container { position: relative; }
+  
+  /* Mobile Hamburger Nav Menu Overlay */
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 76px);
+    background: var(--bg-glass);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 3rem 2rem;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 99;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+    animation: slideDown 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-link {
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+  
+  /* Hamburger Icon Animation */
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+  }
+  
+  .mobile-toggle span {
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: var(--radius-full);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .mobile-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* 3D Visualizer mobile optimization */
+  .three-canvas-box {
+    height: 270px;
+  }
+  
+  .viewport-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .materials-property-grid { grid-template-columns: 1fr; }
+  .res-buttons-grid { grid-template-columns: 1fr; }
+  .modal-body { grid-template-columns: 1fr; }
+  
+  .section { padding: 3rem 0; }
+  .section-title { font-size: 2rem; }
+  .wizard-container { padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .footer-container { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Marketplace de Diseñadores 3D Styles
+   ========================================================================== */
+
+.marketplace-section {
+  background-color: #0a0a0a !important;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* Stats Section */
+.marketplace-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: -1rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.stat-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+/* Layout Grid */
+.marketplace-layout-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 2.5rem;
+}
+
+/* Search Row */
+.marketplace-search-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-input-wrapper .search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+#marketplace-search-input {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  border-radius: var(--radius-full);
+  outline: none;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+#marketplace-search-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+}
+
+.marketplace-category-filter {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.m-filter-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.m-filter-btn:hover, .m-filter-btn.active {
+  background: var(--gradient-gold);
+  color: #000;
+  border-color: transparent;
+  box-shadow: var(--shadow-gold);
+}
+
+/* Model Cards Grid */
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.model-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.model-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-highlight);
+  box-shadow: var(--shadow-gold);
+}
+
+.model-thumb-box {
+  position: relative;
+  aspect-ratio: 16 / 13;
+  background: #0d0f14;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model-thumb-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-normal);
+}
+
+.model-card:hover .model-thumb-box img {
+  transform: scale(1.06);
+}
+
+.model-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  z-index: 2;
+}
+
+.badge-top-seller {
+  background: var(--gradient-gold);
+  color: #000;
+  box-shadow: var(--shadow-gold);
+}
+
+.badge-new {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+.model-details {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.model-category {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.model-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.model-author {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+}
+
+.model-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.model-price-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.model-price-box span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.model-price-box strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Sidebar Styling */
+.designer-promo-card {
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.designer-promo-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+}
+
+.promo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.promo-header h3 {
+  font-size: 1.25rem;
+}
+
+.promo-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.promo-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.promo-features-list li {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.feat-bullet {
+  color: var(--accent-gold);
+  font-weight: bold;
+}
+
+.promo-features-list strong {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.promo-features-list span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: block;
+  line-height: 1.35;
+}
+
+/* Top Designers Ranking */
+.designers-ranking-card {
+  padding: 1.5rem;
+}
+
+.designers-ranking-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.ranking-item:hover {
+  background: rgba(212, 175, 55, 0.04);
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.rank-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.ranking-item:nth-child(1) .rank-number {
+  background: var(--gradient-gold);
+  color: #000;
+  box-shadow: var(--shadow-gold);
+}
+
+.rank-details {
+  flex: 1;
+}
+
+.rank-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.rank-stats {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+  .marketplace-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .marketplace-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .marketplace-search-bar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .marketplace-category-filter {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .m-filter-btn {
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================================================
+   SPA - Single Page Application View Router
+   ========================================================================== */
+
+/* Define which elements behave as separate page views */
+.hero,
+.galeria-section,
+.marketplace-section,
+.generador-ia-section,
+.materiales-section,
+.faq-section {
+  display: none; /* Hidden by default */
+  animation: pageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Active view display */
+.hero.active-page,
+.galeria-section.active-page,
+.marketplace-section.active-page,
+.generador-ia-section.active-page,
+.materiales-section.active-page,
+.faq-section.active-page {
+  display: block !important;
+}/* Smooth fade and lift transition when changing pages */
+@keyframes pageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   AI 3D Model Generator Section Styles
+   ========================================================================== */
+
+
+
+
+
+/* Materials Comparative Table Styles */
+.materials-comparative-wrapper {
+  padding: 2.2rem;
+  margin-top: 3rem;
+  border: 1px solid var(--border-color);
+}
+
+.comparative-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.comparative-table th {
+  padding: 1rem;
+  border-bottom: 2px solid var(--border-highlight);
+  color: var(--accent-gold);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.comparative-table td {
+  padding: 1.1rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.comparative-table tbody tr:hover {
+  background: rgba(212, 175, 55, 0.03);
+}
+
+.comparative-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+</style>
+
+  <!-- Cache Control Meta Tags -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <span>✨ <strong>ArteDigital3D Studio</strong>: Manufactura aditiva en filamentos PLA Pro y PETG Técnico — ¡Cotiza tus proyectos personalizados!</span>
+      <a href="#galeria" class="announcement-link">Ver Catálogo &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="brand-logo">
+        <img src="assets/logo_ad3d.png" alt="Logo ArteDigital3D" class="brand-logo-img">
+        <span class="brand-name">ArteDigital<span class="brand-highlight">3D</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#galeria" class="nav-link">Galería</a>
+        <a href="#marketplace" class="nav-link">Marketplace</a>
+        <a href="#materiales" class="nav-link">Materiales</a>
+        <a href="#faq" class="nav-link">Preguntas Frecuentes</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Cambiar Tema">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="cart-btn" id="open-cart-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-text">Carrito</span>
+          <span class="cart-badge" id="cart-badge-count">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="sparkle">✦</span> Manufactura Aditiva Premium
+        </div>
+        <h1 class="hero-title">
+          Transforma tus ideas en <span class="gold-gradient-text">Impresiones 3D de Precisión</span>
+        </h1>
+        <p class="hero-subtitle">
+          Estudio especializado en impresión 3D FDM. Fabricamos tus proyectos con filamentos de alta gama <strong>PLA Pro Premium y PETG Técnico</strong>, logrando acabados de nivel industrial con cotización directa y personalizada.
+        </p>
+ 
+        <div class="hero-cta-group">
+          <a href="#galeria" class="btn btn-primary btn-lg shadow-gold">
+            Ver Catálogo
+          </a>
+          <a href="https://wa.me/56998874601?text=Hola%20ArteDigital3D,%20quiero%20cotizar%20un%20modelo%203D%20para%20imprimir." target="_blank" class="btn btn-whatsapp btn-lg">
+            💬 Cotizar Modelo
+          </a>
+          <a href="https://instagram.com/arte.digital3d" target="_blank" class="btn btn-instagram btn-lg">
+            📸 Instagram
+          </a>
+        </div>
+ 
+        <div class="hero-features-list">
+          <div class="feature-item">
+            <div class="feature-icon">⏱️</div>
+            <div>
+              <strong>Cotización Rápida</strong>
+              <span>Respuesta ágil por WhatsApp</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <div>
+              <strong>Calidad Industrial</strong>
+              <span>Acabados premium FDM</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🌈</div>
+            <div>
+              <strong>Color a Elección</strong>
+              <span>Filamentos PLA Pro & PETG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-preview glass-panel">
+          <div class="hero-card-header">
+            <span class="live-dot"></span>
+            <span class="live-label">Modelo Destacado ArteDigital3D</span>
+          </div>
+          <div class="hero-image-wrapper">
+            <img src="assets/dummy13_500_150.jpg" alt="Figura Articulada Dummy 13 (500% y 150%) Impresa en 3D" class="hero-img">
+            <div class="hero-badge-floating">
+              <span class="badge-icon">🌿</span> PLA Pro Multi-Escala
+            </div>
+          </div>
+          <div class="hero-card-footer">
+            <div class="hero-card-info">
+              <h4>Dummy 13 Articulado (500% & 150%)</h4>
+              <p>Material: PLA Pro Naranja & Negro Matte</p>
+            </div>
+            <div class="hero-card-price">
+              <span class="price-label">Desde</span>
+              <span class="price-val">$14.990</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- Product Gallery Section -->
+  <section class="section galeria-section" id="galeria">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Catálogo Exclusivo</span>
+        <h2 class="section-title">Galería de Productos ArteDigital3D</h2>
+        <p class="section-subtitle">Explora piezas impresas listas para encargar o personalizar en el color deseado (PLA Pro y PETG Técnico).</p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="gallery-filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="figuras-articuladas">Figuras Articuladas</button>
+        <button class="filter-btn" data-filter="clickers">Clickers & Fidgets</button>
+        <button class="filter-btn" data-filter="lamparas">Lámparas 3D</button>
+        <button class="filter-btn" data-filter="oficina-trabajo">Oficina y Trabajo</button>
+        <button class="filter-btn" data-filter="floreros-macetas">Floreros y Macetas</button>
+        <button class="filter-btn" data-filter="modelos-virales">Modelos Virales</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="products-grid" id="products-grid">
+        <!-- Dynamic Products Injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketplace Section -->
+  <section class="section marketplace-section" id="marketplace">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Comunidad & Diseño</span>
+        <h2 class="section-title">Marketplace de Diseñadores 3D</h2>
+        <p class="section-subtitle">Publica tus diseños, vende tus modelos y gana por cada impresión realizada.</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="marketplace-stats-grid mb-4">
+        <div class="stat-card glass-panel">
+          <div class="stat-num gold-gradient-text">+500</div>
+          <div class="stat-label">Diseños Disponibles</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-num gold-gradient-text">+120</div>
+          <div class="stat-label">Diseñadores Activos</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-num gold-gradient-text">+2.500</div>
+          <div class="stat-label">Impresiones Realizadas</div>
+        </div>
+      </div>
+
+      <!-- Search and Layout Grid -->
+      <div class="marketplace-layout-grid">
+        
+        <!-- Left Side: Catalog Content -->
+        <div class="marketplace-catalog-col">
+          <!-- Search & Filter Header -->
+          <div class="marketplace-search-bar-row mb-3">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="marketplace-search-input" placeholder="Buscar modelo, diseñador o palabra clave...">
+            </div>
+            <div class="marketplace-category-filter">
+              <button class="m-filter-btn active" data-mfilter="all">Todos</button>
+              <button class="m-filter-btn" data-mfilter="figuras">Figuras</button>
+              <button class="m-filter-btn" data-mfilter="hogar">Hogar</button>
+              <button class="m-filter-btn" data-mfilter="gadgets">Gadgets</button>
+              <button class="m-filter-btn" data-mfilter="cosplay">Cosplay</button>
+            </div>
+          </div>
+
+          <!-- Marketplace Cards Grid -->
+          <div class="marketplace-grid" id="marketplace-grid">
+            <!-- Dynamic Marketplace Cards Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Right Side: Creator Sidebar -->
+        <div class="marketplace-sidebar-col">
+          <!-- Eres Diseñador Info Panel -->
+          <div class="designer-promo-card glass-panel">
+            <div class="promo-header">
+              <span class="promo-icon">🎨</span>
+              <h3>¿Eres Diseñador?</h3>
+            </div>
+            <p class="promo-desc">Monetiza tus archivos STL, OBJ o 3MF sin preocuparte por la producción ni envíos.</p>
+            
+            <ul class="promo-features-list">
+              <li>
+                <span class="feat-bullet">✦</span>
+                <div>
+                  <strong>Sube tus STL</strong>
+                  <span>Sube tus archivos de forma segura a nuestra biblioteca.</span>
+                </div>
+              </li>
+              <li>
+                <span class="feat-bullet">✦</span>
+                <div>
+                  <strong>Define tu comisión</strong>
+                  <span>Elige cuánto quieres ganar por cada venta de tu diseño.</span>
+                </div>
+              </li>
+              <li>
+                <span class="feat-bullet">✦</span>
+                <div>
+                  <strong>Recibe pagos automáticos</strong>
+                  <span>Depósitos mensuales automáticos por tus comisiones.</span>
+                </div>
+              </li>
+              <li>
+                <span class="feat-bullet">✦</span>
+                <div>
+                  <strong>Estadísticas de ventas</strong>
+                  <span>Monitorea tus descargas e impresiones desde tu dashboard.</span>
+                </div>
+              </li>
+            </ul>
+
+            <button class="btn btn-primary btn-block shadow-gold mt-3" onclick="openDesignerModal()">
+              Convertirme en Diseñador
+            </button>
+          </div>
+
+          <!-- Top Designers Ranking Widget -->
+          <div class="designers-ranking-card glass-panel mt-3">
+            <h3>🏆 Creadores Destacados</h3>
+            <div class="ranking-list" id="designers-ranking-list">
+              <!-- Dynamically Injected ranking list -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Designer Application Modal -->
+  <div class="modal-overlay" id="designer-modal">
+    <div class="modal-card glass-panel" style="max-width: 550px; padding: 2rem;">
+      <button class="modal-close" onclick="closeDesignerModal()">&times;</button>
+      
+      <!-- Modal Tabs -->
+      <div class="modal-tabs mb-4">
+        <button class="modal-tab-btn active" onclick="switchModalTab('signup', this)">Registrarse como Creador</button>
+        <button class="modal-tab-btn" onclick="switchModalTab('upload', this)">Publicar Trabajo / Servicio</button>
+      </div>
+
+      <!-- Tab 1: Creator Signup Form -->
+      <div id="tab-signup-content" class="modal-tab-content active">
+        <div class="modal-header text-center mb-3">
+          <span class="section-badge">Únete al Equipo</span>
+          <h2>Forma parte del Marketplace</h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Envíanos tu portafolio y nos pondremos en contacto para habilitar tu cuenta de creador.</p>
+        </div>
+        <form id="designer-signup-form" onsubmit="handleDesignerSignup(event)">
+          <div class="form-group mb-3">
+            <label><strong>Nombre de Creador / Marca:</strong></label>
+            <input type="text" class="form-input" required placeholder="Ej: PixelMaster3D">
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Correo electrónico:</strong></label>
+            <input type="email" class="form-input" required placeholder="Ej: diseno@tucorreo.com">
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Enlace a Portafolio (Thingiverse, Printables, ArtStation):</strong></label>
+            <input type="url" class="form-input" required placeholder="https://www.printables.com/@tuusuario">
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Cuéntanos sobre tus diseños:</strong></label>
+            <textarea class="form-input" rows="3" placeholder="Ej: Diseños mecánicos, figuras estilo low poly, maquetas de arquitectura..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg shadow-gold">
+            🚀 Enviar Solicitud de Creador
+          </button>
+        </form>
+      </div>
+
+      <!-- Tab 2: Upload Work/Service Form -->
+      <div id="tab-upload-content" class="modal-tab-content">
+        <div class="modal-header text-center mb-3">
+          <span class="section-badge">Ofrecer Servicios</span>
+          <h2>Publicar Diseño o Servicio</h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Sube tu modelo o describe tu servicio de modelado para ofrecerlo a través de ArteDigital3D.</p>
+        </div>
+        <form id="modeler-upload-form" onsubmit="handleModelerUpload(event)">
+          <div class="form-group mb-3">
+            <label><strong>Tu Nombre / Nick:</strong></label>
+            <input type="text" id="upload-author" class="form-input" required placeholder="Ej: VortexForge">
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Título del Trabajo o Servicio:</strong></label>
+            <input type="text" id="upload-title" class="form-input" required placeholder="Ej: Soporte de Pared para Auriculares">
+          </div>
+          <div class="form-row mb-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label><strong>Categoría:</strong></label>
+              <select id="upload-category" class="form-input" required>
+                <option value="hogar">Hogar / Decoración</option>
+                <option value="figuras">Figuras / Colección</option>
+                <option value="gadgets">Gadgets / Utilidades</option>
+                <option value="cosplay">Cosplay / Réplicas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><strong>Precio de Referencia ($):</strong></label>
+              <input type="number" id="upload-price" class="form-input" required placeholder="Ej: 15000">
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Subir Imagen del Modelo (Previsualización):</strong></label>
+            <input type="file" id="upload-image-file" class="form-input" accept="image/*" required>
+          </div>
+          <div class="form-group mb-3">
+            <label><strong>Archivo 3D Relacionado (.STL, .OBJ, .3MF):</strong></label>
+            <input type="file" id="upload-3d-file" class="form-input" accept=".stl,.obj,.3mf">
+          </div>
+          <div class="form-group mb-4">
+            <label><strong>Descripción del Trabajo / Servicio:</strong></label>
+            <textarea id="upload-desc" class="form-input" rows="2" placeholder="Ej: Modelo optimizado para impresión FDM sin soportes. Ofrezco escalado y modificaciones..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg shadow-gold">
+            ✦ Publicar en el Marketplace
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Materials Guide Section (PLA & PETG Only) -->
+  <section class="section materiales-section" id="materiales">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Guía Técnica</span>
+        <h2 class="section-title">Nuestros Materiales de Impresión 3D</h2>
+        <p class="section-subtitle">Seleccionamos filamentos de la más alta calidad para garantizar acabados impecables y durabilidad.</p>
+      </div>
+
+      <div class="materials-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto;">
+        <div class="material-card glass-panel Highlight-card">
+          <div class="mat-card-badge gold-badge">Ecológico & Versátil</div>
+          <h3 class="mat-name">PLA Pro Premium</h3>
+          <p class="mat-description">Termoplástico biodegradable derivado de recursos renovables. Ofrece acabados nítidos, colores intensos y sin deformaciones.</p>
+          
+          <div class="mat-specs-list">
+            <div class="spec-bar-item">
+              <div class="spec-info"><span>Detalle Visual</span><strong>9.5/10</strong></div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+            </div>
+            <div class="spec-bar-item">
+              <div class="spec-info"><span>Resistencia Mecánica</span><strong>7.5/10</strong></div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+            </div>
+            <div class="spec-bar-item">
+              <div class="spec-info"><span>Resistencia Térmica</span><strong>60°C</strong></div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+            </div>
+          </div>
+          <div class="mat-ideal-use">
+            <strong>Ideal para:</strong> Figuras de colección, prototipos estéticos, maceteros, maquetas y objetos decorativos.
+          </div>
+        </div>
+
+        <div class="material-card glass-panel Highlight-card">
+          <div class="mat-card-badge gold-badge">Técnico & Duradero</div>
+          <h3 class="mat-name">PETG Resistencia</h3>
+          <p class="mat-description">Ofrece una resistencia mecánica superior con gran flexibilidad estructural y alta durabilidad frente a intemperie, agua y sol.</p>
+          
+          <div class="mat-specs-list">
+            <div class="spec-bar-item">
+              <div class="spec-info"><span>Detalle Visual</span><strong>8.8/10</strong></div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 88%"></div></div>
+            </div>
+            <div class="spec-bar-item">
+              <div class="spec-info"><span>Resistencia Mecánica</span><strong>9.5/10</strong></div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+            </div>
+            <div class="spec-bar-item">
+              <div class="spec-info"><span>Resistencia Térmica</span><strong>85°C</strong></div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+            </div>
+          </div>
+          <div class="mat-ideal-use">
+            <strong>Ideal para:</strong> Piezas mecánicas, engranajes, soportes expuestos a agua/sol, carcasas y partes de uso rudo.
+          </div>
+        </div>
+      </div>
+
+      <!-- Materials Comparative Table -->
+      <div class="materials-comparative-wrapper glass-panel mt-5">
+        <h3 class="text-center gold-gradient-text mb-4">Tabla Comparativa: PLA Pro vs PETG</h3>
+        <div class="table-responsive">
+          <table class="comparative-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>PLA Pro Premium</th>
+                <th>PETG Técnico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Resistencia al Impacto</strong></td>
+                <td>Moderada (Más rígido / quebradizo)</td>
+                <td>Excelente (Alta tenacidad / flexible)</td>
+              </tr>
+              <tr>
+                <td><strong>Resistencia Térmica</strong></td>
+                <td>Hasta 60°C (Interior)</td>
+                <td>Hasta 85°C (Exterior / Motor)</td>
+              </tr>
+              <tr>
+                <td><strong>Acabado Estético</strong></td>
+                <td>Brillante / Sedoso / Definido (9.5/10)</td>
+                <td>Semi-Brillante / Técnico (8.8/10)</td>
+              </tr>
+              <tr>
+                <td><strong>Facilidad de Impresión</strong></td>
+                <td>Muy Alta (Ideal para formas complejas)</td>
+                <td>Moderada (Requiere calibración técnica)</td>
+              </tr>
+              <tr>
+                <td><strong>Resistencia a la Intemperie</strong></td>
+                <td>Baja (No recomendado para sol continuo)</td>
+                <td>Muy Alta (Resiste rayos UV y humedad)</td>
+              </tr>
+              <tr>
+                <td><strong>Flexibilidad</strong></td>
+                <td>Baja (Rígido)</td>
+                <td>Moderada (Cierta elasticidad)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Dudas Frecuentes</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Todo lo que necesitas saber antes de encargar tus proyectos en ArteDigital3D.</p>
+      </div>
+
+      <div class="faq-accordion-container">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿En qué formato debo enviar mis archivos 3D?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Puedes subir archivos en formato <strong>.STL, .OBJ o .3MF</strong> de hasta <strong>50 MB</strong> directamente en nuestro visualizador 3D en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Cómo puedo cotizar la impresión de mi modelo 3D?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Es muy sencillo. Haz clic en el botón <strong>"Cotizar Modelo"</strong> en el inicio o contáctanos por WhatsApp. Envíanos tu archivo 3D (.STL, .OBJ o .3MF), indícanos el material (PLA o PETG) y el color que deseas, y te enviaremos un presupuesto detallado en minutos.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Cuál es la diferencia entre PLA Pro y PETG?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p><strong>PLA Pro</strong> destaca por su acabado visual impecable, nitidez en capas y variedad de colores (ideal para figuras y decoración). <strong>PETG</strong> ofrece mayor resistencia al impacto, flexibilidad estructural y tolerancia a temperaturas y sol intemperie (ideal para piezas funcionales y mecánicas).</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Hacen envíos a regiones o entrega directa?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>¡Sí! Realizamos envíos cuidadosamente empaquetados a todo el país vía Starken, Chilexpress o Blue Express.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="cta-banner">
+    <div class="container text-center">
+      <h2>¿Tienes un proyecto especial o un diseño personalizado?</h2>
+      <p>Envíanos tu idea o modelo 3D y te asesoramos personalmente por WhatsApp.</p>
+      <div class="cta-banner-buttons">
+        <a href="#galeria" class="btn btn-primary btn-lg shadow-gold">Ver Catálogo de Productos</a>
+        <a href="https://wa.me/56998874601?text=Hola%20ArteDigital3D,%20tengo%20una%20consulta%20sobre%20un%20proyecto%20personalizado." target="_blank" class="btn btn-whatsapp btn-lg">
+          💬 WhatsApp Directo (+569 9887 4601)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo">
+          <img src="assets/logo_ad3d.png" alt="Logo ArteDigital3D" class="brand-logo-img">
+          <span class="brand-name">ArteDigital<span class="brand-highlight">3D</span></span>
+        </div>
+        <p>Estudio especializado en manufactura aditiva FDM en filamentos PLA Pro y PETG Técnico. Cotiza tus modelos de forma directa y personalizada.</p>
+        <div class="social-links">
+          <a href="https://instagram.com/arte.digital3d" target="_blank" aria-label="Instagram">📸 @arte.digital3d</a>
+          <a href="https://wa.me/56998874601" target="_blank" aria-label="WhatsApp">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#galeria">Galería de Productos</a></li>
+          <li><a href="#marketplace">Marketplace 3D</a></li>
+          <li><a href="#materiales">Guía de Materiales</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Materiales 3D</h4>
+        <ul>
+          <li>PLA Pro Premium</li>
+          <li>PETG Técnico Resistencia</li>
+          <li>Cotización Directa & Rápida</li>
+          <li>Formatos .STL / .OBJ / .3MF</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto directo</h4>
+        <p>📱 WhatsApp: <strong>+56 9 9887 4601</strong></p>
+        <p>📸 Instagram: <strong>@arte.digital3d</strong></p>
+        <p>📍 Chile</p>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 ArteDigital3D. Todos los derechos reservados. Estética Studio Lujo.</p>
+    </div>
+  </footer>
+
+  <!-- Product Modal / Lightbox -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-card glass-panel">
+      <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img-col">
+          <img src="" id="modal-img" alt="Producto ArteDigital3D">
+        </div>
+        <div class="modal-info-col">
+          <span class="modal-badge" id="modal-badge">PLA Pro</span>
+          <h2 id="modal-title">Título del Producto</h2>
+          <p class="modal-price" id="modal-price">$0</p>
+          <p class="modal-desc" id="modal-desc">Descripción del producto...</p>
+
+          <div class="modal-option-group" id="modal-scale-group" style="display: none;">
+            <label><strong>Seleccionar Escala / Tamaño:</strong></label>
+            <select id="modal-scale-select" class="form-input" onchange="handleModalScaleChange(this)">
+            </select>
+          </div>
+
+          <div class="modal-option-group">
+            <label><strong>Color de Impresión:</strong></label>
+            <select id="modal-color-select" class="form-input">
+              <option value="Negro Mate Studio">Negro Mate Studio</option>
+              <option value="Blanco Puro">Blanco Puro</option>
+              <option value="Oro Titán Metalizado">Oro Titán Metalizado</option>
+              <option value="Gris Espacial">Gris Espacial</option>
+              <option value="Rojo Vivo PETG">Rojo Vivo PETG</option>
+              <option value="Azul Cobalto PETG">Azul Cobalto PETG</option>
+            </select>
+          </div>
+
+          <div class="modal-option-group">
+            <label><strong>Cantidad:</strong></label>
+            <div class="quantity-picker">
+              <button class="qty-btn" onclick="updateModalQty(-1)">-</button>
+              <span id="modal-qty">1</span>
+              <button class="qty-btn" onclick="updateModalQty(1)">+</button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block btn-lg shadow-gold mt-3" onclick="addModalProductToCart()">
+            🛒 Añadir al Carrito de Compras
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Cart Slide-over Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="closeCartDrawer(event)">
+    <div class="cart-drawer glass-panel" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <h3>🛒 Tu Carrito (<span id="cart-drawer-count">0</span>)</h3>
+        <button class="cart-close-btn" onclick="closeCartDrawer()">&times;</button>
+      </div>
+
+      <div class="cart-body" id="cart-items-container">
+        <div class="empty-cart-msg text-center">
+          <p>Tu carrito está vacío.</p>
+          <a href="#galeria" class="btn btn-sm btn-primary" onclick="closeCartDrawer()">Explorar Catálogo</a>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-totals">
+          <div class="cart-total-row">
+            <span>Subtotal:</span>
+            <strong id="cart-subtotal-val">$0 CLP</strong>
+          </div>
+          <div class="cart-total-row">
+            <span>WhatsApp Contacto:</span>
+            <span>+56 9 9887 4601</span>
+          </div>
+          <div class="cart-total-row total-highlight">
+            <span>Total Estimado:</span>
+            <strong id="cart-total-val" class="gold-gradient-text">$0 CLP</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-whatsapp btn-block btn-lg mt-3" onclick="checkoutViaWhatsApp()">
+          📲 Enviar Pedido a WhatsApp (+569 9887 4601)
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- JS -->
+  <script>
+/* ==========================================================================
+   ArteDigital3D - Impresión 3D Premium
+   ========================================================================== */
+
+const CONTACT_PHONE = '56998874601';
+const INSTAGRAM_HANDLE = '@arte.digital3d';
+const MAX_FILE_SIZE_MB = 50;
+
+function formatCLP(val) {
+  return '$' + Number(val).toLocaleString('es-CL');
+}
+
+// Global State
+let currentTheme = localStorage.getItem('ad3d_theme') || 'dark';
+let cart = JSON.parse(localStorage.getItem('ad3d_cart')) || [];
+
+
+
+// Gallery Products Data
+const productsData = [
+  {
+    id: 1,
+    title: 'Figura Articulada Dummy 13 (500% y 150%)',
+    category: 'figuras-articuladas',
+    categoryName: 'Figuras Articuladas',
+    material: 'PLA Pro Naranja & Negro',
+    price: 14990,
+    desc: 'Figura de acción articulada impresa en 3D en múltiples escalas (500% Gigante y 150% Básica). Ensamble de precisión con articulaciones ultra resistentes.',
+    img: 'assets/dummy13_500_150.jpg',
+    badge: '★ Destacado',
+    scales: [
+      { label: 'Escala 150%', price: 14990 },
+      { label: 'Escala 500% (Gigante)', price: 80000 }
+    ]
+  },
+
+  {
+    id: 3,
+    title: 'Fidget Clicker Switch de Teclado',
+    category: 'clickers',
+    categoryName: 'Clickers & Fidgets',
+    material: 'PLA Pro & Switch Táctil',
+    price: 4990,
+    desc: 'Llavero fidget clicker con switch mecánico premium. Sonido altamente satisfactorio ideal para aliviar el estrés.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Anti-Estrés'
+  },
+  {
+    id: 4,
+    title: 'Clicker Mecánico de Engranajes',
+    category: 'clickers',
+    categoryName: 'Clickers & Fidgets',
+    material: 'PETG Técnico Metálico',
+    price: 8900,
+    desc: 'Juguete clicker de bolsillo con engranajes planetarios que giran de forma fluida produciendo clicks mecánicos.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Giroscópico'
+  },
+  {
+    id: 5,
+    title: 'Lámpara de Luna Llena 3D LED',
+    category: 'lamparas',
+    categoryName: 'Lámparas 3D',
+    material: 'PLA Pro Ivory Transparente',
+    price: 29900,
+    desc: 'Lámpara decorativa con relieve fotográfico preciso de la superficie lunar. Incluye base de madera fina y luz LED cálida.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Estilo & Luz'
+  },
+  {
+    id: 6,
+    title: 'Lámpara Litofanía Personalizada',
+    category: 'lamparas',
+    categoryName: 'Lámparas 3D',
+    material: 'PLA Pro Premium Blanco',
+    price: 34900,
+    desc: 'Lámpara cúbica con 4 caras personalizables a partir de tus fotos familiares. Revela las imágenes con alto detalle al encenderse.',
+    img: 'assets/lampara_litofania.png',
+    badge: '100% Personalizado'
+  },
+  {
+    id: 8,
+    title: 'Juego de Lámparas para Velas de Té – Colección Geométrica Moderna',
+    category: 'lamparas',
+    categoryName: 'Lámparas 3D',
+    material: 'PLA Pro Ivory Transparente',
+    price: 12990,
+    desc: 'Set de lámparas decorativas con diseños geométricos modernos para velas de té. Excelente translucidez que proyecta hermosas figuras y sombras cálidas.',
+    img: 'assets/lamparas_velas_te.jpg',
+    badge: 'Colección'
+  },
+  {
+    id: 7,
+    title: 'Dispensador de Bolas 2" Pulgadas',
+    category: 'modelos-virales',
+    categoryName: 'Modelos Virales',
+    material: 'A Pedido / Color a Elección',
+    price: 179990,
+    desc: 'Dispensador modular interactivo para cápsulas o bolas de 2 pulgadas. Producto a pedido, color a elegir. Estructura de panal resistente y funcional.',
+    img: 'assets/dispensador_bolas.jpg',
+    badge: '★ Nuevo'
+  },
+  {
+    id: 9,
+    title: 'Organizador de Escritorio Paramétrico',
+    category: 'oficina-trabajo',
+    categoryName: 'Oficina y Trabajo',
+    material: 'PLA Pro Premium Gris',
+    price: 15900,
+    desc: 'Organizador de escritorio modular con compartimentos para bolígrafos, tarjetas, notas y teléfono móvil. Diseño minimalista y elegante.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Organización'
+  },
+  {
+    id: 10,
+    title: 'Soporte de Notebook Ajustable FDM',
+    category: 'oficina-trabajo',
+    categoryName: 'Oficina y Trabajo',
+    material: 'PETG Técnico Negro',
+    price: 19900,
+    desc: 'Soporte ergonómico plegable para notebook. Mejora la postura y la ventilación del equipo. Fabricado en PETG reforzado.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Ergonomía'
+  },
+  {
+    id: 11,
+    title: 'Porta Lápices Espiral de Diseño',
+    category: 'oficina-trabajo',
+    categoryName: 'Oficina y Trabajo',
+    material: 'PLA Pro Seda Oro',
+    price: 7900,
+    desc: 'Porta lápices con diseño helicoidal y estructura dinámica. Ideal para dar un toque artístico a tu escritorio de oficina.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Estilo Studio'
+  },
+  {
+    id: 12,
+    title: 'Florero Paramétrico Origami',
+    category: 'floreros-macetas',
+    categoryName: 'Floreros y Macetas',
+    material: 'PLA Pro Mate Blanco',
+    price: 18500,
+    desc: 'Jarrón de diseño geométrico vanguardista. Estructura liviana de alta definición visual tratada para impermeabilidad.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Diseño Exclusivo'
+  },
+  {
+    id: 13,
+    title: 'Maceta Auto-Riego Inteligente',
+    category: 'floreros-macetas',
+    categoryName: 'Floreros y Macetas',
+    material: 'PLA Pro Verde Oliva',
+    price: 14900,
+    desc: 'Maceta funcional de dos piezas con sistema de auto-riego por capilaridad. Perfecta para plantas de interior.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Auto-Riego'
+  },
+  {
+    id: 14,
+    title: 'Macetero Hexagonal en Cascada',
+    category: 'floreros-macetas',
+    categoryName: 'Floreros y Macetas',
+    material: 'PLA Pro Seda Cobre',
+    price: 12500,
+    desc: 'Soporte modular de macetas hexagonales en cascada para suculentas. Ideal para repisas o decoración vertical.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Sustentable'
+  },
+  {
+    id: 15,
+    title: 'Fidget Clicker Patita de Gato',
+    category: 'modelos-virales',
+    categoryName: 'Modelos Virales',
+    material: 'PLA Pro Rosa & Blanco',
+    price: 3990,
+    desc: 'Fidget toy viral de TikTok con forma de patita de gato. Incluye switch mecánico táctil y silicona suave al tacto.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'TikTok Viral'
+  },
+  {
+    id: 16,
+    title: 'Maceta Calavera Low-Poly',
+    category: 'modelos-virales',
+    categoryName: 'Modelos Virales',
+    material: 'PLA Pro Blanco Mate',
+    price: 8900,
+    desc: 'Maceta de calavera en estilo low-poly. Muy popular en redes para suculentas o plantas pequeñas de escritorio.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Trending'
+  },
+  {
+    id: 17,
+    title: 'Babosa Articulada Fidget Slug',
+    category: 'modelos-virales',
+    categoryName: 'Modelos Virales',
+    material: 'PLA Pro Multicolor Seda',
+    price: 5900,
+    desc: 'La clásica babosa articulada antiestrés. Sonido crujiente y movimiento extremadamente fluido que encanta a todos.',
+    img: 'assets/logo_ad3d.png',
+    badge: 'Más Vendido'
+  },
+  {
+    id: 18,
+    title: 'Lámpara Sol de Mayo',
+    category: 'lamparas',
+    categoryName: 'Lámparas 3D',
+    material: 'PLA Pro Terracota / Transparente',
+    price: 29900,
+    desc: 'Lámpara escultórica impresa en 3D inspirada en formas tradicionales japonesas y en formas solares radiantes.',
+    img: 'assets/lampara_sol_de_mayo.jpg',
+    badge: 'Escultórico'
+  },
+  {
+    id: 19,
+    title: 'Dragón Shenron Articulado',
+    category: 'figuras-articuladas',
+    categoryName: 'Figuras Articuladas',
+    material: 'PLA Pro Verde & Bronce',
+    price: 14990,
+    desc: 'Figura mítica de dragón Shenron con articulaciones completas impresas en 3D. Excelente nivel de detalle en escamas y cuernos.',
+    img: 'assets/dragon_shenron.jpg',
+    badge: 'Mítico',
+    colors: ['Clásico Shenron', 'Variante']
+  },
+  {
+    id: 20,
+    title: 'Figura Dummy 13 (150% Versión Básica)',
+    category: 'figuras-articuladas',
+    categoryName: 'Figuras Articuladas',
+    material: 'PLA Pro (Variedad de Colores)',
+    price: 14990,
+    desc: 'Dummy 150% Variedad de Colores Version Basica',
+    img: 'assets/dummy13_colors_150.jpg',
+    badge: '★ 150% Básica',
+    colors: ['Naranjo', 'Blanco', 'Verde', 'Morado', 'Rojo', 'Amarillo']
+  }
+];
+
+// Marketplace Designs Data (ONLY PLA Pro and PETG)
+const marketplaceData = [
+  {
+    id: 107,
+    title: 'Dispensador de Bolas 2" Pulgadas',
+    author: 'ArteDigital3D',
+    category: 'hogar',
+    price: 179990,
+    fileName: 'dispensador_bolas_2in.stl',
+    badge: 'badge-new',
+    badgeText: 'Nuevo',
+    img: 'assets/dispensador_bolas.jpg'
+  },
+  {
+    id: 101,
+    title: 'Cactus Paramétrico Geométrico',
+    author: '3DArtisan',
+    category: 'hogar',
+    price: 9990,
+    fileName: 'cactus_geometrico.stl',
+    badge: 'badge-top-seller',
+    badgeText: 'Top Seller',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 102,
+    title: 'Soporte Mandos Gaming Sci-Fi',
+    author: 'VortexForge',
+    category: 'gadgets',
+    price: 13500,
+    fileName: 'soporte_gaming_scifi.stl',
+    badge: 'badge-new',
+    badgeText: 'Nuevo',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 103,
+    title: 'Figura Zbrush Cyber Dragon',
+    author: 'DragonScales',
+    category: 'figuras',
+    price: 24900,
+    fileName: 'cyber_dragon_sculpt.obj',
+    badge: 'badge-top-seller',
+    badgeText: 'Top Seller',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 104,
+    title: 'Máscara Oni Cyberpunk V2',
+    author: 'CyberProps',
+    category: 'cosplay',
+    price: 35000,
+    fileName: 'oni_mask_cyberpunk.3mf',
+    badge: 'badge-new',
+    badgeText: 'Nuevo',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 105,
+    title: 'Organizador Escritorio Colmena',
+    author: 'BambuLines',
+    category: 'hogar',
+    price: 11990,
+    fileName: 'organizador_colmena.stl',
+    badge: 'badge-top-seller',
+    badgeText: 'Popular',
+    img: 'assets/logo_ad3d.png'
+  },
+  {
+    id: 106,
+    title: 'Soporte Auriculares Neon Beam',
+    author: 'VortexForge',
+    category: 'gadgets',
+    price: 14900,
+    fileName: 'neon_beam_stand.stl',
+    badge: 'badge-top-seller',
+    badgeText: 'Top Seller',
+    img: 'assets/logo_ad3d.png'
+  }
+];
+
+const designersRanking = [
+  { rank: 1, name: 'VortexForge', sales: 420, avatar: 'VF' },
+  { rank: 2, name: '3DArtisan', sales: 385, avatar: '3D' },
+  { rank: 3, name: 'CyberProps', sales: 310, avatar: 'CP' },
+  { rank: 4, name: 'DragonScales', sales: 290, avatar: 'DS' },
+  { rank: 5, name: 'BambuLines', sales: 180, avatar: 'BL' }
+];
+
+let selectedModalProduct = null;
+let modalQty = 1;
+
+// --- Initialize Application ---
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  renderGallery('all');
+  updateCartBadge();
+  
+  // Initialize Marketplace
+  renderMarketplace('all');
+  renderDesignersRanking();
+  setupMarketplaceSearchAndFilters();
+  
+  // Initialize SPA Page Routing
+  initPageRouter();
+
+});
+
+// --- Theme Toggle ---
+function initTheme() {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  const toggleBtn = document.getElementById('theme-toggle');
+  toggleBtn?.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('ad3d_theme', currentTheme);
+  });
+}
+
+
+// Gallery & Cart Drawer System
+// ==========================================================================
+
+function renderGallery(filterCategory) {
+  const container = document.getElementById('products-grid');
+  if (!container) return;
+
+  const filtered = filterCategory === 'all' 
+    ? productsData 
+    : productsData.filter(p => p.category === filterCategory);
+
+  container.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <div class="product-thumb-container">
+        <span class="product-badge-tag">${p.badge}</span>
+        <img src="${p.img}" alt="${p.title}" class="product-thumb">
+      </div>
+      <div class="product-details">
+        <span class="modal-badge">${p.material}</span>
+        <h3 class="product-title">${p.title}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-price-row">
+          <span class="product-price">${formatCLP(p.price)}</span>
+          <button class="btn btn-secondary btn-sm" onclick="openProductModal(${p.id})">
+            Ver / Encargar
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-filter') === filterCategory);
+  });
+}
+
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('filter-btn')) {
+    renderGallery(e.target.getAttribute('data-filter'));
+  }
+});
+
+function openProductModal(productId) {
+  const prod = productsData.find(p => p.id === productId);
+  if (!prod) return;
+
+  selectedModalProduct = { ...prod };
+  modalQty = 1;
+
+  document.getElementById('modal-img').src = prod.img;
+  document.getElementById('modal-badge').textContent = prod.material;
+  document.getElementById('modal-title').textContent = prod.title;
+  document.getElementById('modal-desc').textContent = prod.desc;
+  document.getElementById('modal-qty').textContent = '1';
+
+  // Handle dynamic scale selector
+  const scaleGroup = document.getElementById('modal-scale-group');
+  const scaleSelect = document.getElementById('modal-scale-select');
+
+  if (scaleGroup && scaleSelect) {
+    if (prod.scales && prod.scales.length > 0) {
+      scaleGroup.style.display = 'block';
+      scaleSelect.innerHTML = prod.scales.map(s => `<option value="${s.price}">${s.label} - ${formatCLP(s.price)}</option>`).join('');
+      document.getElementById('modal-price').textContent = formatCLP(prod.scales[0].price);
+      selectedModalProduct.currentPrice = prod.scales[0].price;
+      selectedModalProduct.selectedScale = prod.scales[0].label;
+    } else {
+      scaleGroup.style.display = 'none';
+      document.getElementById('modal-price').textContent = formatCLP(prod.price);
+      delete selectedModalProduct.currentPrice;
+      delete selectedModalProduct.selectedScale;
+    }
+  } else {
+    document.getElementById('modal-price').textContent = formatCLP(prod.price);
+  }
+
+  const colorSelect = document.getElementById('modal-color-select');
+  if (colorSelect) {
+    const colorList = prod.colors && prod.colors.length > 0
+      ? prod.colors
+      : ['Negro Mate Studio', 'Blanco Puro', 'Oro Titán Metalizado', 'Gris Espacial', 'Rojo Vivo PETG', 'Azul Cobalto PETG'];
+    
+    colorSelect.innerHTML = colorList.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  document.getElementById('product-modal').classList.add('active');
+}
+
+function handleModalScaleChange(selectElem) {
+  if (!selectedModalProduct) return;
+  const newPrice = parseInt(selectElem.value, 10);
+  const selectedOption = selectElem.options[selectElem.selectedIndex];
+  const scaleLabel = selectedOption.text.split(' - ')[0];
+
+  document.getElementById('modal-price').textContent = formatCLP(newPrice);
+  selectedModalProduct.currentPrice = newPrice;
+  selectedModalProduct.selectedScale = scaleLabel;
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('active');
+}
+
+function updateModalQty(delta) {
+  modalQty += delta;
+  if (modalQty < 1) modalQty = 1;
+  document.getElementById('modal-qty').textContent = modalQty;
+}
+
+function addModalProductToCart() {
+  if (!selectedModalProduct) return;
+
+  const colorSelect = document.getElementById('modal-color-select');
+  const chosenColor = colorSelect ? colorSelect.value : 'Negro Mate Studio';
+  const finalPrice = selectedModalProduct.currentPrice || selectedModalProduct.price;
+  const scaleText = selectedModalProduct.selectedScale ? ` (${selectedModalProduct.selectedScale})` : '';
+
+  const cartItem = {
+    id: 'prod_' + selectedModalProduct.id + '_' + Date.now(),
+    title: selectedModalProduct.title + scaleText,
+    category: 'gallery',
+    material: selectedModalProduct.material,
+    color: chosenColor,
+    price: finalPrice,
+    qty: modalQty,
+    img: selectedModalProduct.img
+  };
+
+  cart.push(cartItem);
+  saveCart();
+  updateCartBadge();
+  closeProductModal();
+  openCartDrawer();
+}
+
+function saveCart() {
+  localStorage.setItem('ad3d_cart', JSON.stringify(cart));
+}
+
+function updateCartBadge() {
+  const count = cart.reduce((acc, item) => acc + item.qty, 0);
+  const badge = document.getElementById('cart-badge-count');
+  const drawerCount = document.getElementById('cart-drawer-count');
+  if (badge) badge.textContent = count;
+  if (drawerCount) drawerCount.textContent = count;
+}
+
+function openCartDrawer() {
+  renderCartItems();
+  document.getElementById('cart-drawer-overlay').classList.add('active');
+}
+
+function closeCartDrawer() {
+  document.getElementById('cart-drawer-overlay').classList.remove('active');
+}
+
+function renderCartItems() {
+  const container = document.getElementById('cart-items-container');
+  if (!container) return;
+
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart-msg text-center">
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Tu carrito está vacío.</p>
+        <a href="#cotizador" class="btn btn-sm btn-primary" onclick="closeCartDrawer()">Ir al Cotizador 3D</a>
+      </div>
+    `;
+    document.getElementById('cart-subtotal-val').textContent = '$0 CLP';
+    document.getElementById('cart-total-val').textContent = '$0 CLP';
+    return;
+  }
+
+  let total = 0;
+  container.innerHTML = cart.map((item, idx) => {
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
+
+    const meta = item.category === 'custom' 
+      ? `Escala: ${item.scale} | ${item.material} | Capa: ${item.layerRes} | Infill: ${item.infill}% (${item.hours} hrs)`
+      : `Material: ${item.material} | Color: ${item.color || 'Negro'}`;
+
+    return `
+      <div class="cart-item">
+        <img src="${item.img}" class="cart-item-img" alt="${item.title}">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${item.title}</div>
+          <div class="cart-item-meta">${meta}</div>
+          <div class="cart-item-price">${formatCLP(item.price)} x ${item.qty} = ${formatCLP(itemTotal)}</div>
+        </div>
+        <button class="cart-item-remove" onclick="removeCartItem(${idx})" title="Eliminar">&times;</button>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('cart-subtotal-val').textContent = formatCLP(total);
+  document.getElementById('cart-total-val').textContent = formatCLP(total);
+}
+
+function removeCartItem(index) {
+  cart.splice(index, 1);
+  saveCart();
+  updateCartBadge();
+  renderCartItems();
+}
+
+function checkoutViaWhatsApp() {
+  if (cart.length === 0) {
+    alert('Tu carrito está vacío.');
+    return;
+  }
+
+  let total = 0;
+  let message = `*📦 NUEVO PEDIDO / COTIZACIÓN - ARTEDIGITAL3D*\n`;
+  message += `==================================\n\n`;
+
+  cart.forEach((item, i) => {
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
+    message += `*${i + 1}. ${item.title}*\n`;
+    message += `   • Cantidad: ${item.qty}\n`;
+    message += `   • Precio: ${formatCLP(item.price)} c/u\n`;
+    if (item.category === 'custom') {
+      message += `   • Especificaciones: Escala ${item.scale} | ${item.material} | Capa ${item.layerRes} | Infill ${item.infill}% (${item.hours} hrs)\n`;
+    } else {
+      message += `   • Material: ${item.material}\n`;
+      message += `   • Color: ${item.color || 'Negro'}\n`;
+    }
+    message += `   • Subtotal: ${formatCLP(itemTotal)}\n\n`;
+  });
+
+  message += `==================================\n`;
+  message += `*TOTAL ESTIMADO:* ${formatCLP(total)} CLP\n`;
+  message += `\n*Por favor indicar datos para despacho o retiro.*`;
+
+  const encodedMsg = encodeURIComponent(message);
+  window.open(`https://wa.me/${CONTACT_PHONE}?text=${encodedMsg}`, '_blank');
+}
+
+document.getElementById('open-cart-btn')?.addEventListener('click', openCartDrawer);
+
+function toggleFaq(buttonElement) {
+  const faqItem = buttonElement.parentElement;
+  faqItem.classList.toggle('active');
+}
+
+// Mobile Hamburger Menu Interactions
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on any nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking anywhere outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+  }
+});
+
+// ==========================================================================
+// Marketplace de Diseñadores 3D Logic
+// ==========================================================================
+
+function renderMarketplace(filterCategory, searchWord = '') {
+  const grid = document.getElementById('marketplace-grid');
+  if (!grid) return;
+
+  const searchLower = searchWord.toLowerCase().trim();
+
+  const filtered = marketplaceData.filter(item => {
+    const matchesCategory = filterCategory === 'all' || item.category === filterCategory;
+    const matchesSearch = !searchLower || 
+      item.title.toLowerCase().includes(searchLower) ||
+      item.author.toLowerCase().includes(searchLower) ||
+      item.category.toLowerCase().includes(searchLower);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
+        <p>No se encontraron modelos con los criterios de búsqueda.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(item => `
+    <div class="model-card">
+      <div class="model-thumb-box">
+        <span class="model-badge ${item.badge}">${item.badgeText}</span>
+        <img src="${item.img}" alt="${item.title}">
+      </div>
+      <div class="model-details">
+        <span class="model-category">${item.category}</span>
+        <h3 class="model-title">${item.title}</h3>
+        <span class="model-author">por @${item.author}</span>
+        
+        <div class="model-footer">
+          <div class="model-price-box">
+            <span>Impresión desde</span>
+            <strong>${formatCLP(item.price)}</strong>
+          </div>
+          <button class="btn btn-primary btn-sm shadow-gold" onclick="loadMarketplaceModelToCotizador(${item.id})">
+            Imprimir Ahora
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDesignersRanking() {
+  const container = document.getElementById('designers-ranking-list');
+  if (!container) return;
+
+  container.innerHTML = designersRanking.map(d => `
+    <div class="ranking-item">
+      <div class="rank-number">${d.rank}</div>
+      <div class="rank-details">
+        <div class="rank-name">@${d.name}</div>
+        <div class="rank-stats">${d.sales} impresiones realizadas</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupMarketplaceSearchAndFilters() {
+  const searchInput = document.getElementById('marketplace-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const activeFilter = document.querySelector('.m-filter-btn.active')?.getAttribute('data-mfilter') || 'all';
+      renderMarketplace(activeFilter, e.target.value);
+    });
+  }
+
+  const filterContainer = document.querySelector('.marketplace-category-filter');
+  if (filterContainer) {
+    filterContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('m-filter-btn')) {
+        document.querySelectorAll('.m-filter-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const filter = e.target.getAttribute('data-mfilter');
+        const searchValue = searchInput ? searchInput.value : '';
+        renderMarketplace(filter, searchValue);
+      }
+    });
+  }
+}
+
+// Action: Load Marketplace Model into Live 3D Visualizer & Go to Cotizador
+function loadMarketplaceModelToCotizador(itemId) {
+  const item = marketplaceData.find(m => m.id === itemId);
+  if (!item) return;
+
+  const message = `*ARTE DIGITAL 3D - MARKETPLACE*\n` +
+                  `==================================\n` +
+                  `• *Modelo:* ${item.title}\n` +
+                  `• *Diseñador:* @${item.author}\n` +
+                  `• *Precio Estimado:* ${formatCLP(item.price)} CLP\n` +
+                  `==================================\n` +
+                  `Hola ArteDigital3D, me gustaría cotizar la impresión de este modelo de diseñador de tu Marketplace. ¿Qué colores y tiempos tienen disponibles?`;
+
+  const encodedMsg = encodeURIComponent(message);
+  window.open(`https://wa.me/${CONTACT_PHONE}?text=${encodedMsg}`, '_blank');
+}
+
+// Creator Signup Modal Functions
+function openDesignerModal() {
+  const modal = document.getElementById('designer-modal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeDesignerModal() {
+  const modal = document.getElementById('designer-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function handleDesignerSignup(event) {
+  event.preventDefault();
+  alert('¡Gracias por postular! Tu solicitud ha sido enviada con éxito. Nuestro equipo revisará tu portafolio y te contactará por correo electrónico dentro de las próximas 48 horas.');
+  closeDesignerModal();
+  event.target.reset();
+}
+
+function switchModalTab(tabId, btn) {
+  document.querySelectorAll('.modal-tab-btn').forEach(button => button.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.modal-tab-content').forEach(content => content.classList.remove('active'));
+  const activeContent = document.getElementById(`tab-${tabId}-content`);
+  if (activeContent) activeContent.classList.add('active');
+}
+
+function handleModelerUpload(event) {
+  event.preventDefault();
+
+  const author = document.getElementById('upload-author').value.trim();
+  const title = document.getElementById('upload-title').value.trim();
+  const category = document.getElementById('upload-category').value;
+  const price = parseFloat(document.getElementById('upload-price').value);
+  const desc = document.getElementById('upload-desc').value.trim();
+  const imgInput = document.getElementById('upload-image-file');
+  const file3dInput = document.getElementById('upload-3d-file');
+
+  let imgURL = 'assets/logo_ad3d.png';
+  if (imgInput && imgInput.files && imgInput.files[0]) {
+    imgURL = URL.createObjectURL(imgInput.files[0]);
+  }
+
+  let file3dName = 'modelo_personalizado.stl';
+  if (file3dInput && file3dInput.files && file3dInput.files[0]) {
+    file3dName = file3dInput.files[0].name;
+  }
+
+  const newItem = {
+    id: Date.now(),
+    title: title,
+    author: author,
+    category: category,
+    price: price,
+    fileName: file3dName,
+    badge: 'badge-new',
+    badgeText: 'Modelador',
+    img: imgURL
+  };
+
+  marketplaceData.unshift(newItem);
+  renderMarketplace('all');
+  closeDesignerModal();
+  event.target.reset();
+
+  alert('¡Felicidades! Tu diseño/servicio ha sido cargado con éxito. Ya está visible y disponible en el Marketplace.');
+}
+
+// --- SPA Page Router ---
+const pageIds = ['inicio', 'galeria', 'marketplace', 'materiales', 'faq'];
+
+function initPageRouter() {
+  // Listen to hash change
+  window.addEventListener('hashchange', handleRouteChange);
+  
+  // Initial load navigation
+  handleRouteChange();
+}
+
+function handleRouteChange() {
+  const hash = window.location.hash.replace('#', '') || 'inicio';
+  
+  if (pageIds.includes(hash)) {
+    navigateToPage(hash);
+  }
+}
+
+function navigateToPage(pageId) {
+  // Hide all sections
+  pageIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.display = 'none';
+      el.classList.remove('active-page');
+    }
+  });
+
+  // Show active section
+  const activeEl = document.getElementById(pageId);
+  if (activeEl) {
+    activeEl.style.display = 'block';
+    activeEl.classList.add('active-page');
+  }
+
+  // Update navigation link highlights in header nav menu
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href').replace('#', '');
+    link.classList.toggle('active', href === pageId);
+  });
+
+  // Scroll smoothly to top of page
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+
+</script>
+</body>
+</html>
